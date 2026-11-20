@@ -24,7 +24,7 @@
       "venue": "Masjid Al-Ikhlas",
       "address": "Jl. Merdeka No. 10, Bandung",
       "mapsUrl": "https://maps.google.com/?q=Masjid+Al-Ikhlas+Bandung",
-      "mapsEmbed": "https://www.google.com/maps?q=Masjid+Al-Ikhlas+Bandung&output=embed"
+      "mapsEmbed": "https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1sMasjid+Al-Ikhlas+Bandung"
     },
     {
       "type": "Resepsi",
@@ -33,7 +33,7 @@
       "venue": "Gedung Serbaguna Melati",
       "address": "Jl. Asia Afrika No. 5, Bandung",
       "mapsUrl": "https://maps.google.com/?q=Gedung+Melati+Bandung",
-      "mapsEmbed": "https://www.google.com/maps?q=Gedung+Melati+Bandung&output=embed"
+      "mapsEmbed": "https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1sGedung+Melati+Bandung"
     }
   ],
   "loveStory": [

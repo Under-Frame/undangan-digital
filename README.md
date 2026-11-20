@@ -9,7 +9,7 @@ Website undangan pernikahan satu halaman bergaya majalah editorial: foto full-sc
 | Fase | Isi | Status |
 | --- | --- | --- |
 | 1 | Setup, palet & font, config + validasi Zod, route `/[slug]`, komponen motion | ✅ Selesai |
-| 2 | Section statis (Cover, Mempelai, Countdown, Acara, Galeri, dst.) | ⏳ |
+| 2 | Section statis (Cover, Musik, Mempelai, Countdown, Acara + kalender, Lokasi, Love Story, Galeri + lightbox, Penutup, Bottom Nav) | ✅ Selesai |
 | 3 | RSVP, Ucapan, Amplop Digital (Supabase) | ⏳ |
 | 4 | Dashboard admin, Open Graph, Lighthouse, dokumentasi lengkap | ⏳ |
 
@@ -42,3 +42,5 @@ app/globals.css            token palet: sage, monokrom, terracotta, navy-gold + 
 ```
 
 Foto di `public/img/rina-dimas/` hanya placeholder gradien, bukan foto orang asli.
+
+**Musik:** file lagu tidak disertakan di repo (hak cipta). Taruh MP3 bebas royalti (maks 3 MB) di `public/music/lagu.mp3`. Jika file tidak ada, tombol musik otomatis disembunyikan.

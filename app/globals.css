@@ -62,7 +62,10 @@
   --color-line: var(--line);
   /* Teks & overlay di atas foto (cover/penutup), sama di semua palet. */
   --color-on-image: #ffffff;
+  --color-ink: #111111; /* teks di atas tombol putih (cover), sama di mode terang & gelap */
   --color-overlay: rgb(0 0 0 / 0.4);
+  /* Latar lightbox galeri. */
+  --color-scrim: rgb(0 0 0 / 0.94);
 
   --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;

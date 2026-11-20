@@ -277,11 +277,11 @@ Kerjakan **satu fase per sesi**. Di akhir fase: jalankan `npm run lint` dan `npm
 - [x] Placeholder foto (gunakan gradien/warna solid atau foto bebas lisensi, bukan foto orang asli tanpa izin).
 
 ### Fase 2 — Section Statis
-- [ ] Cover (+ nama tamu `?to=`, kunci scroll sebelum dibuka) dan Musik.
-- [ ] Mempelai, Countdown, Detail Acara (+ Simpan ke Kalender), Lokasi.
-- [ ] Love Story, Galeri bento + Lightbox, Penutup.
-- [ ] Bottom Nav glassmorphism dengan indikator section aktif.
-- [ ] Tampilan dicek di lebar 360, 390, 430, dan 1280 px.
+- [x] Cover (+ nama tamu `?to=`, kunci scroll sebelum dibuka) dan Musik.
+- [x] Mempelai, Countdown, Detail Acara (+ Simpan ke Kalender), Lokasi.
+- [x] Love Story, Galeri bento + Lightbox, Penutup.
+- [x] Bottom Nav glassmorphism dengan indikator section aktif.
+- [x] Tampilan dicek di lebar 360, 390, 430, dan 1280 px.
 
 ### Fase 3 — Fitur Interaktif
 - [ ] `supabase/schema.sql`, `lib/supabase.ts`, fallback in-memory.

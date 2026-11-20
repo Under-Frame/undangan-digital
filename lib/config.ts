@@ -76,6 +76,8 @@ export const weddingConfigSchema = z.object({
   liveStreamUrl: z.url().nullish(),
   quote: z.object({ text: text(600), source: text(80) }).nullish(),
   closing: text(400),
+  /** Foto latar bagian Penutup. Jika kosong, memakai coverImage. */
+  closingImage: publicPath.nullish(),
   /** Password tidak boleh ditulis langsung di config; tulis nama env var-nya. */
   adminPassword: z
     .string()

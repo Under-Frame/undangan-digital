@@ -3,6 +3,34 @@ export function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
 
+export const DEFAULT_GUEST_NAME = "Tamu Undangan";
+
+/**
+ * Nama tamu dari query `?to=`: buang karakter kontrol & tanda kurung sudut,
+ * rapikan spasi, maks 50 karakter. Kosong → "Tamu Undangan".
+ */
+export function sanitizeGuestName(raw: string | string[] | undefined) {
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  if (!value) return DEFAULT_GUEST_NAME;
+
+  let decoded = value;
+  try {
+    // Jaga-jaga jika nama ter-encode dua kali (mis. "Pak%2520Hadi").
+    if (/%[0-9A-Fa-f]{2}/.test(decoded)) decoded = decodeURIComponent(decoded);
+  } catch {
+    // biarkan apa adanya jika bukan encoding valid
+  }
+
+  const clean = decoded
+    .replace(/[\u0000-\u001F\u007F<>{}`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 50)
+    .trim();
+
+  return clean || DEFAULT_GUEST_NAME;
+}
+
 /** Semua tanggal acara ditampilkan dalam zona waktu WIB. */
 export const WEDDING_TIME_ZONE = "Asia/Jakarta";
 

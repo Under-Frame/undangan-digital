@@ -24,7 +24,8 @@ export function Parallax({ children, className, mode = "inview" }: ParallaxProps
   const scale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 1.1]);
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className ?? ""}`}>
+    // className wajib memberi posisi (mis. "absolute inset-0" atau "relative h-96").
+    <div ref={ref} className={`overflow-hidden ${className ?? ""}`}>
       <motion.div className="absolute inset-0 will-change-transform" style={{ scale }}>
         {children}
       </motion.div>
