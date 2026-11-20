@@ -73,10 +73,23 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
             alt=""
             width={1200}
             height={630}
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
           />
         ) : null}
-        <div style={{ position: "absolute", inset: 0, display: "flex", backgroundColor: "rgba(0,0,0,0.4)" }} />
+        {/* Overlay 40% + gradasi gelap di kiri-bawah agar teks tetap terbaca di foto yang terang. */}
+        <div
+          style={{
+            // Satori (generator gambar OG) tidak mendukung `inset`, jadi posisi ditulis eksplisit.
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            backgroundImage:
+              "linear-gradient(to top right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.3) 100%)",
+          }}
+        />
         <div
           style={{
             position: "relative",

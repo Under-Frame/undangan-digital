@@ -74,5 +74,6 @@
     "source": "QS. Ar-Rum: 21"
   },
   "closing": "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.",
+  "closingImage": "/img/rina-dimas/closing.webp",
   "adminPassword": "ENV:ADMIN_PASSWORD_RINA_DIMAS"
 }

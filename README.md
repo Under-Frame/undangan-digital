@@ -154,7 +154,13 @@ supabase/schema.sql            skema database
 
 **Performa:** animasi cover memakai CSS murni (tampil tanpa menunggu JavaScript), Framer Motion dimuat bertahap lewat `LazyMotion`, peta Google baru dimuat saat mendekati layar, dan semua foto memakai `next/image` dengan lazy-load.
 
-**Konten:** foto di `public/img/rina-dimas/` hanya placeholder gradien, bukan foto orang asli. File musik tidak disertakan (hak cipta) — tanpa file, tombol musik otomatis disembunyikan.
+**Foto demo:** foto di `public/img/rina-dimas/` berasal dari Unsplash ([Unsplash License](https://unsplash.com/license) — gratis, boleh komersial) dan **hanya untuk demo**. Untuk undangan klien, ganti dengan foto milik pasangan; jangan sertakan foto demo ini saat menjual template (pakai `npm run placeholders` sebagai gantinya). Terima kasih kepada:
+
+- [Mesa Photo](https://unsplash.com/photos/V8JBij7CvUE) — cover, mempelai pria, galeri
+- [Nina Mercado](https://unsplash.com/photos/JpUvjHmaGkI) — mempelai wanita, galeri
+- [Jocelyn Allen](https://unsplash.com/photos/B3xc3hzPF68) — penutup, galeri
+
+**Musik:** file lagu tidak disertakan (hak cipta) — tanpa file, tombol musik otomatis disembunyikan.
 
 ---
 

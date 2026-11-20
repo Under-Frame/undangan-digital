@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 !.env.example
+
+# Foto mentah unduhan (sumber sebelum dikonversi ke public/img)
+/foto-contoh/
