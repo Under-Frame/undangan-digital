@@ -9,7 +9,7 @@ import { formatDateDots } from "@/lib/utils";
 
 export const alt = "Undangan pernikahan";
 export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const contentType = "image/jpeg";
 
 /** Ambil font TTF dari Google Fonts untuk Satori. Gagal → pakai font bawaan. */
 async function loadFont(family: string, weight: number, text: string) {
@@ -55,7 +55,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
     ...(sans ? [{ name: "Jakarta", data: sans, weight: 500 as const, style: "normal" as const }] : []),
   ];
 
-  return new ImageResponse(
+  const image = new ImageResponse(
     (
       <div
         style={{
@@ -116,4 +116,14 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
     ),
     { ...size, fonts },
   );
+
+  // PNG foto ±900 KB terlalu besar untuk preview WhatsApp (batas aman ±300 KB) → kirim sebagai JPEG.
+  const png = Buffer.from(await image.arrayBuffer());
+  const jpeg = await sharp(png).jpeg({ quality: 78, mozjpeg: true }).toBuffer();
+  return new Response(new Uint8Array(jpeg), {
+    headers: {
+      "Content-Type": "image/jpeg",
+      "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+    },
+  });
 }

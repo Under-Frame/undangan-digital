@@ -4,6 +4,8 @@ Website undangan pernikahan satu halaman bergaya majalah editorial: foto full-sc
 
 Semua konten undangan berasal dari **satu file config**, jadi undangan pasangan baru bisa dibuat tanpa mengedit kode.
 
+**🔗 Demo:** <https://undangan-digital-ten-psi.vercel.app/rina-dimas?to=Bapak%20Ibu> · Dashboard admin: <https://undangan-digital-ten-psi.vercel.app/rina-dimas/admin>
+
 **Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Framer Motion · Zod · Supabase · lucide-react
 
 | Lighthouse (mobile, build produksi) | Skor |
