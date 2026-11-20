@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { MotionProvider } from "@/components/motion/MotionProvider";
+import { getSiteUrl } from "@/lib/site";
+
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -15,7 +18,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(getSiteUrl()),
   title: "Undangan Pernikahan Digital",
   description: "Undangan pernikahan digital bergaya editorial.",
 };
@@ -33,7 +36,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id" className={`${fraunces.variable} ${jakarta.variable}`}>
-      <body className="min-h-dvh bg-bg text-fg antialiased">{children}</body>
+      <body className="min-h-dvh bg-bg text-fg antialiased">
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }

@@ -1,10 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, MailOpen } from "lucide-react";
 import Image from "next/image";
 
-import { EASE_EDITORIAL } from "@/components/motion/easing";
 import { Parallax } from "@/components/motion/Parallax";
 import { SplitText } from "@/components/motion/SplitText";
 
@@ -20,12 +18,8 @@ export type CoverProps = {
 };
 
 export function Cover({ coupleNames, dateLabel, image, guestName, nextSectionId, opened, onOpen }: CoverProps) {
-  const reduce = useReducedMotion();
-  const fadeUp = (delay: number) => ({
-    initial: reduce ? false : ({ opacity: 0, y: 16 } as const),
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: EASE_EDITORIAL, delay },
-  });
+  // Animasi masuk memakai CSS (bukan Framer Motion) agar cover tampil tanpa menunggu JavaScript.
+  const fadeUp = (delay: number) => ({ style: { animationDelay: `${delay}s` } });
 
   return (
     <header id="home" className="relative h-svh min-h-[600px] overflow-hidden text-on-image">
@@ -35,9 +29,9 @@ export function Cover({ coupleNames, dateLabel, image, guestName, nextSectionId,
       <div className="absolute inset-0 bg-overlay" aria-hidden="true" />
 
       <div className="relative mx-auto flex h-full max-w-[1100px] flex-col px-6 pt-[max(3rem,env(safe-area-inset-top))] pb-12 md:px-10">
-        <motion.p className="label-caps" {...fadeUp(0)}>
+        <p {...fadeUp(0)} className="label-caps animate-fade-up">
           The Wedding of
-        </motion.p>
+        </p>
 
         <div className="mt-auto">
           <SplitText
@@ -47,12 +41,12 @@ export function Cover({ coupleNames, dateLabel, image, guestName, nextSectionId,
             delay={0.15}
             className="text-[clamp(3.5rem,17vw,4.5rem)] leading-[0.95] md:text-[clamp(4.5rem,8vw,6.5rem)]"
           />
-          <motion.div className="mt-6 flex items-center gap-4" {...fadeUp(0.5)}>
+          <div {...fadeUp(0.5)} className="animate-fade-up mt-6 flex items-center gap-4">
             <span className="h-px w-12 bg-on-image/60" aria-hidden="true" />
             <p className="label-caps">{dateLabel}</p>
-          </motion.div>
+          </div>
 
-          <motion.div className="mt-14 border-t border-on-image/30 pt-6" {...fadeUp(0.7)}>
+          <div {...fadeUp(0.7)} className="animate-fade-up mt-14 border-t border-on-image/30 pt-6">
             <p className="label-caps opacity-80">Kepada Yth.</p>
             <p className="mt-2 font-serif text-2xl break-words md:text-3xl">{guestName}</p>
             <p className="mt-1 text-sm opacity-80">Tanpa mengurangi rasa hormat, kami mengundang Anda.</p>
@@ -73,7 +67,7 @@ export function Cover({ coupleNames, dateLabel, image, guestName, nextSectionId,
                 </button>
               )}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </header>

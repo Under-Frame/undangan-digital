@@ -14,6 +14,7 @@ import { Rsvp } from "@/components/sections/Rsvp";
 import { Wishes } from "@/components/sections/Wishes";
 import type { NavItem } from "@/components/ui/BottomNav";
 import { getWeddingConfig } from "@/lib/config";
+import { getSiteUrl } from "@/lib/site";
 import { isDemoMode } from "@/lib/supabase";
 import { DEFAULT_GUEST_NAME, formatDateDots, formatDateLong, sanitizeGuestName } from "@/lib/utils";
 
@@ -28,9 +29,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!config) return { title: "Undangan tidak ditemukan" };
 
   const couple = `${config.bride.nickname} & ${config.groom.nickname}`;
+  const title = `The Wedding of ${couple}`;
+  const description = `Undangan pernikahan ${couple} — ${formatDateLong(config.events[0].start)}. Kami mengharapkan kehadiran dan doa restu Anda.`;
+  // Gambar Open Graph otomatis dari ./opengraph-image.tsx
   return {
-    title: `The Wedding of ${couple}`,
-    description: `Undangan pernikahan ${couple} — ${formatDateLong(config.events[0].start)}.`,
+    title,
+    description,
+    alternates: { canonical: `/${slug}` },
+    openGraph: { title, description, type: "website", locale: "id_ID", url: `/${slug}`, siteName: title },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 
@@ -43,7 +50,7 @@ export default async function WeddingPage({ params, searchParams }: PageProps) {
   const coupleNames = `${bride.nickname} & ${groom.nickname}`;
   const firstEvent = [...events].sort((a, b) => Date.parse(a.start) - Date.parse(b.start))[0];
   const dateLabel = formatDateDots(firstEvent.start);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const siteUrl = getSiteUrl();
 
   const guestName = sanitizeGuestName(to);
   const prefillName = guestName === DEFAULT_GUEST_NAME ? "" : guestName;

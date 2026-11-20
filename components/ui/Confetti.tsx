@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 
 type ConfettiProps = {
@@ -37,7 +37,7 @@ export function Confetti({ burst }: ConfettiProps) {
   return (
     <div key={burst} className="pointer-events-none absolute inset-0 grid place-items-center" aria-hidden="true">
       {pieces.map((p, i) => (
-        <motion.span
+        <m.span
           key={i}
           className="absolute"
           style={{

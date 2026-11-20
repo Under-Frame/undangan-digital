@@ -2,7 +2,7 @@ import "server-only";
 
 import { randomUUID } from "node:crypto";
 
-import type { Attendance, Wish } from "@/lib/schemas";
+import type { AdminWish, Attendance, Wish } from "@/lib/schemas";
 import { getSupabaseAdmin, TABLES } from "@/lib/supabase";
 
 /**
@@ -85,6 +85,70 @@ export async function listWishes(slug: string, offset: number, limit: number) {
     items: rows.slice(0, limit).map((r) => ({ id: r.id, name: r.guest_name, message: r.message, createdAt: r.created_at })),
     hasMore: rows.length > limit,
   };
+}
+
+/* ------------------------------ admin ---------------------------------- */
+
+const ADMIN_LIMIT = 5000;
+
+/** Semua RSVP satu undangan, terbaru di atas. Hanya untuk dashboard admin. */
+export async function listRsvp(slug: string): Promise<RsvpRecord[]> {
+  const db = getSupabaseAdmin();
+  if (!db) return memory.rsvp.filter((r) => r.slug === slug);
+  const { data, error } = await db
+    .from(TABLES.rsvp)
+    .select("id, guest_name, attendance, guest_count, created_at")
+    .eq("wedding_slug", slug)
+    .order("created_at", { ascending: false })
+    .limit(ADMIN_LIMIT);
+  if (error) throw new Error(`Gagal memuat RSVP: ${error.message}`);
+  return (data ?? []).map((r) => ({
+    id: r.id,
+    slug,
+    name: r.guest_name,
+    attendance: r.attendance,
+    guestCount: r.guest_count,
+    createdAt: r.created_at,
+  }));
+}
+
+/** Semua ucapan termasuk yang disembunyikan. Hanya untuk dashboard admin. */
+export async function listAllWishes(slug: string): Promise<AdminWish[]> {
+  const db = getSupabaseAdmin();
+  if (!db) return memory.wishes.filter((w) => w.slug === slug).map((w) => ({ ...toWish(w), hidden: w.hidden }));
+  const { data, error } = await db
+    .from(TABLES.wishes)
+    .select("id, guest_name, message, is_hidden, created_at")
+    .eq("wedding_slug", slug)
+    .order("created_at", { ascending: false })
+    .limit(ADMIN_LIMIT);
+  if (error) throw new Error(`Gagal memuat ucapan: ${error.message}`);
+  return (data ?? []).map((r) => ({
+    id: r.id,
+    name: r.guest_name,
+    message: r.message,
+    createdAt: r.created_at,
+    hidden: r.is_hidden,
+  }));
+}
+
+/** Sembunyikan/tampilkan ucapan. Mengembalikan false jika ucapan tidak ditemukan. */
+export async function setWishHidden(slug: string, id: string, hidden: boolean): Promise<boolean> {
+  const db = getSupabaseAdmin();
+  if (!db) {
+    const wish = memory.wishes.find((w) => w.slug === slug && w.id === id);
+    if (!wish) return false;
+    wish.hidden = hidden;
+    return true;
+  }
+  const { data, error } = await db
+    .from(TABLES.wishes)
+    .update({ is_hidden: hidden })
+    .eq("wedding_slug", slug)
+    .eq("id", id)
+    .select("id");
+  if (error) throw new Error(`Gagal mengubah ucapan: ${error.message}`);
+  return (data ?? []).length > 0;
 }
 
 function toWish({ id, name, message, createdAt }: WishRecord): Wish {

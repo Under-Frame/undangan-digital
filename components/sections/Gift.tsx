@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { ChevronDown, Copy, Gift as GiftIcon, MapPin } from "lucide-react";
 import Image from "next/image";
 import { useId, useState } from "react";
@@ -9,6 +9,7 @@ import { EASE_EDITORIAL } from "@/components/motion/easing";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useToast } from "@/components/ui/Toast";
+import { copyText } from "@/lib/clipboard";
 import type { WeddingConfig } from "@/lib/config";
 import { groupDigits } from "@/lib/utils";
 
@@ -18,25 +19,6 @@ type GiftProps = {
   giftAddress?: string | null;
   coupleNames: string;
 };
-
-async function copyText(text: string) {
-  try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch {
-    // Fallback untuk in-app browser lama yang tidak mendukung Clipboard API.
-    const el = document.createElement("textarea");
-    el.value = text;
-    el.setAttribute("readonly", "");
-    el.style.position = "fixed";
-    el.style.opacity = "0";
-    document.body.appendChild(el);
-    el.select();
-    const ok = document.execCommand("copy");
-    el.remove();
-    return ok;
-  }
-}
 
 export function Gift({ gifts, qrisImage, giftAddress, coupleNames }: GiftProps) {
   const [open, setOpen] = useState(false);
@@ -72,7 +54,7 @@ export function Gift({ gifts, qrisImage, giftAddress, coupleNames }: GiftProps) 
 
       <AnimatePresence initial={false}>
         {open ? (
-          <motion.div
+          <m.div
             id={panelId}
             key="panel"
             initial={reduce ? { opacity: 0 } : { opacity: 0, height: 0 }}
@@ -147,7 +129,7 @@ export function Gift({ gifts, qrisImage, giftAddress, coupleNames }: GiftProps) 
                 </article>
               ) : null}
             </div>
-          </motion.div>
+          </m.div>
         ) : null}
       </AnimatePresence>
     </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 import { EASE_EDITORIAL } from "./easing";
@@ -16,7 +16,7 @@ type RevealProps = {
 /** Fade + naik 24 px saat masuk viewport, sekali saja. Tanpa gerak jika reduced-motion. */
 export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
   const reduce = useReducedMotion();
-  const Component = motion[as];
+  const Component = m[as];
 
   return (
     <Component

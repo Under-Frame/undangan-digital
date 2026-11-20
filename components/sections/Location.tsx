@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 
 import { Reveal } from "@/components/motion/Reveal";
+import { LazyMap } from "@/components/ui/LazyMap";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { WeddingEvent } from "@/lib/config";
 
@@ -26,18 +27,7 @@ export function Location({ events }: LocationProps) {
             <h3 className="mt-3 text-[clamp(1.75rem,7vw,2.25rem)]">{place.venue}</h3>
             <p className="mt-2 text-muted">{place.address}</p>
 
-            {place.mapsEmbed ? (
-              <div className="mt-6 aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-line">
-                <iframe
-                  src={place.mapsEmbed}
-                  title={`Peta lokasi ${place.venue}`}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                  className="size-full grayscale-[35%]"
-                />
-              </div>
-            ) : null}
+            {place.mapsEmbed ? <LazyMap src={place.mapsEmbed} title={`Peta lokasi ${place.venue}`} /> : null}
 
             <a
               href={place.mapsUrl}

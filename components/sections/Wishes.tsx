@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { Loader2, Send } from "lucide-react";
 import { useCallback, useEffect, useId, useState, type FormEvent } from "react";
 
@@ -178,7 +178,7 @@ export function Wishes({ slug, defaultName, demo }: WishesProps) {
             <ul className="divide-y divide-line border-y border-line empty:border-0" aria-label="Daftar ucapan" aria-busy={loading}>
               <AnimatePresence initial={false}>
                 {wishes.map((wish) => (
-                  <motion.li
+                  <m.li
                     key={wish.id}
                     layout={!reduce}
                     initial={reduce ? false : { opacity: 0, y: -12 }}
@@ -201,7 +201,7 @@ export function Wishes({ slug, defaultName, demo }: WishesProps) {
                       </p>
                       <p className="mt-1 break-words whitespace-pre-line text-muted">{wish.message}</p>
                     </div>
-                  </motion.li>
+                  </m.li>
                 ))}
               </AnimatePresence>
             </ul>

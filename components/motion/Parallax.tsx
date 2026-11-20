@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { m, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
 type ParallaxProps = {
@@ -26,9 +26,9 @@ export function Parallax({ children, className, mode = "inview" }: ParallaxProps
   return (
     // className wajib memberi posisi (mis. "absolute inset-0" atau "relative h-96").
     <div ref={ref} className={`overflow-hidden ${className ?? ""}`}>
-      <motion.div className="absolute inset-0 will-change-transform" style={{ scale }}>
+      <m.div className="absolute inset-0 will-change-transform" style={{ scale }}>
         {children}
-      </motion.div>
+      </m.div>
     </div>
   );
 }

@@ -290,10 +290,10 @@ Kerjakan **satu fase per sesi**. Di akhir fase: jalankan `npm run lint` dan `npm
 - [x] Amplop Digital (kartu debit, salin nomor, QRIS, alamat kado).
 
 ### Fase 4 — Admin, SEO & Polish
-- [ ] Dashboard admin: login, ringkasan, tabel + export CSV, moderasi ucapan, generator link tamu + teks WhatsApp.
-- [ ] Open Graph image + metadata.
-- [ ] Audit Lighthouse mobile memenuhi target bagian 9; perbaiki jika belum.
-- [ ] `README.md`: cara install, cara membuat undangan pasangan baru (langkah ganti config + foto), cara deploy ke Vercel, cara setup Supabase.
+- [x] Dashboard admin: login, ringkasan, tabel + export CSV, moderasi ucapan, generator link tamu + teks WhatsApp.
+- [x] Open Graph image + metadata.
+- [x] Audit Lighthouse mobile memenuhi target bagian 9; perbaiki jika belum.
+- [x] `README.md`: cara install, cara membuat undangan pasangan baru (langkah ganti config + foto), cara deploy ke Vercel, cara setup Supabase.
 
 ## 12. Di Luar Scope MVP (versi 2)
 

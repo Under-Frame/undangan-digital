@@ -128,6 +128,19 @@ export function formatDateLong(iso: string) {
   }).format(new Date(iso));
 }
 
+/** "14 Feb 2027, 08.00" */
+export function formatDateTime(iso: string) {
+  return new Intl.DateTimeFormat("id-ID", {
+    timeZone: WEDDING_TIME_ZONE,
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(new Date(iso));
+}
+
 /** "08.00" */
 export function formatTime(iso: string) {
   return new Intl.DateTimeFormat("id-ID", {

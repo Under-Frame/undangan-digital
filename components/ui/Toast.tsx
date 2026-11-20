@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { CircleCheck } from "lucide-react";
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 
@@ -37,7 +37,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       >
         <AnimatePresence initial={false}>
           {toasts.map((t) => (
-            <motion.div
+            <m.div
               key={t.id}
               layout={!reduce}
               initial={reduce ? { opacity: 0 } : { opacity: 0, y: -16, scale: 0.96 }}
@@ -48,7 +48,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             >
               <CircleCheck className="size-4" aria-hidden="true" />
               {t.message}
-            </motion.div>
+            </m.div>
           ))}
         </AnimatePresence>
       </div>

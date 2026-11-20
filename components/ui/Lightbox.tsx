@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion, type PanInfo } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
@@ -73,7 +73,7 @@ export function Lightbox({ images, alt, index, onIndexChange, onClose }: Lightbo
   return (
     <AnimatePresence>
       {index !== null ? (
-        <motion.div
+        <m.div
           ref={dialogRef}
           role="dialog"
           aria-modal="true"
@@ -101,7 +101,7 @@ export function Lightbox({ images, alt, index, onIndexChange, onClose }: Lightbo
 
           <div className="relative flex-1 overflow-hidden">
             <AnimatePresence initial={false} mode="popLayout">
-              <motion.div
+              <m.div
                 key={index}
                 className="absolute inset-4 touch-pan-y md:inset-12"
                 drag={total > 1 ? "x" : false}
@@ -121,7 +121,7 @@ export function Lightbox({ images, alt, index, onIndexChange, onClose }: Lightbo
                   draggable={false}
                   className="pointer-events-none object-contain select-none"
                 />
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
 
@@ -146,7 +146,7 @@ export function Lightbox({ images, alt, index, onIndexChange, onClose }: Lightbo
               </button>
             </div>
           ) : null}
-        </motion.div>
+        </m.div>
       ) : null}
     </AnimatePresence>
   );
