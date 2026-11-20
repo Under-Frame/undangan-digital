@@ -7,11 +7,15 @@ import { Countdown } from "@/components/sections/Countdown";
 import { Couple } from "@/components/sections/Couple";
 import { Events } from "@/components/sections/Events";
 import { Gallery } from "@/components/sections/Gallery";
+import { Gift } from "@/components/sections/Gift";
 import { Location } from "@/components/sections/Location";
 import { LoveStory } from "@/components/sections/LoveStory";
+import { Rsvp } from "@/components/sections/Rsvp";
+import { Wishes } from "@/components/sections/Wishes";
 import type { NavItem } from "@/components/ui/BottomNav";
 import { getWeddingConfig } from "@/lib/config";
-import { formatDateDots, formatDateLong, sanitizeGuestName } from "@/lib/utils";
+import { isDemoMode } from "@/lib/supabase";
+import { DEFAULT_GUEST_NAME, formatDateDots, formatDateLong, sanitizeGuestName } from "@/lib/utils";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -41,10 +45,15 @@ export default async function WeddingPage({ params, searchParams }: PageProps) {
   const dateLabel = formatDateDots(firstEvent.start);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
+  const guestName = sanitizeGuestName(to);
+  const prefillName = guestName === DEFAULT_GUEST_NAME ? "" : guestName;
+  const demo = isDemoMode();
+
   const hasStory = Boolean(config.loveStory?.length);
   const hasGallery = config.gallery.length > 0;
+  const hasGift = config.gifts.length > 0 || Boolean(config.qrisImage) || Boolean(config.giftAddress);
 
-  // Hanya tampilkan menu untuk section yang ada. RSVP & Hadiah ditambahkan di Fase 3.
+  // Hanya tampilkan menu untuk section yang ada.
   const navItems: NavItem[] = [
     { label: "Home", icon: "home", sectionIds: ["home"] },
     { label: "Mempelai", icon: "couple", sectionIds: ["mempelai", "countdown"] },
@@ -52,6 +61,8 @@ export default async function WeddingPage({ params, searchParams }: PageProps) {
     ...(hasGallery || hasStory
       ? [{ label: "Galeri", icon: "gallery", sectionIds: hasGallery ? ["galeri", "cerita"] : ["cerita"] } satisfies NavItem]
       : []),
+    { label: "RSVP", icon: "rsvp", sectionIds: ["rsvp", "ucapan"] },
+    ...(hasGift ? [{ label: "Hadiah", icon: "gift", sectionIds: ["hadiah"] } satisfies NavItem] : []),
   ];
 
   return (
@@ -61,7 +72,7 @@ export default async function WeddingPage({ params, searchParams }: PageProps) {
           coupleNames,
           dateLabel,
           image: config.coverImage,
-          guestName: sanitizeGuestName(to),
+          guestName,
           nextSectionId: "mempelai",
         }}
         music={config.music}
@@ -80,6 +91,16 @@ export default async function WeddingPage({ params, searchParams }: PageProps) {
           <Location events={events} />
           {hasStory && config.loveStory ? <LoveStory stories={config.loveStory} /> : null}
           {hasGallery ? <Gallery images={config.gallery} coupleNames={coupleNames} /> : null}
+          <Rsvp slug={slug} defaultName={prefillName} demo={demo} />
+          <Wishes slug={slug} defaultName={prefillName} demo={demo} />
+          {hasGift ? (
+            <Gift
+              gifts={config.gifts}
+              qrisImage={config.qrisImage}
+              giftAddress={config.giftAddress}
+              coupleNames={coupleNames}
+            />
+          ) : null}
         </main>
         <Closing
           image={config.closingImage ?? config.coverImage}

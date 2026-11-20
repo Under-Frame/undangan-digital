@@ -284,10 +284,10 @@ Kerjakan **satu fase per sesi**. Di akhir fase: jalankan `npm run lint` dan `npm
 - [x] Tampilan dicek di lebar 360, 390, 430, dan 1280 px.
 
 ### Fase 3 — Fitur Interaktif
-- [ ] `supabase/schema.sql`, `lib/supabase.ts`, fallback in-memory.
-- [ ] API + form RSVP (validasi, rate limit, toast, konfeti).
-- [ ] API + list Ucapan (pagination, filter kata kasar, waktu relatif).
-- [ ] Amplop Digital (kartu debit, salin nomor, QRIS, alamat kado).
+- [x] `supabase/schema.sql`, `lib/supabase.ts`, fallback in-memory.
+- [x] API + form RSVP (validasi, rate limit, toast, konfeti).
+- [x] API + list Ucapan (pagination, filter kata kasar, waktu relatif).
+- [x] Amplop Digital (kartu debit, salin nomor, QRIS, alamat kado).
 
 ### Fase 4 — Admin, SEO & Polish
 - [ ] Dashboard admin: login, ringkasan, tabel + export CSV, moderasi ucapan, generator link tamu + teks WhatsApp.
