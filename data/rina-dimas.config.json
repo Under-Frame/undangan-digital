@@ -1,0 +1,78 @@
+{
+  "slug": "rina-dimas",
+  "palette": "sage",
+  "coverImage": "/img/rina-dimas/cover.webp",
+  "bride": {
+    "name": "Rina Amelia",
+    "nickname": "Rina",
+    "parents": "Putri dari Bpk. Ahmad & Ibu Siti",
+    "instagram": "rinaamelia",
+    "photo": "/img/rina-dimas/bride.webp"
+  },
+  "groom": {
+    "name": "Dimas Pratama",
+    "nickname": "Dimas",
+    "parents": "Putra dari Bpk. Budi & Ibu Ani",
+    "instagram": "dimaspratama",
+    "photo": "/img/rina-dimas/groom.webp"
+  },
+  "events": [
+    {
+      "type": "Akad Nikah",
+      "start": "2027-02-14T08:00:00+07:00",
+      "end": "2027-02-14T10:00:00+07:00",
+      "venue": "Masjid Al-Ikhlas",
+      "address": "Jl. Merdeka No. 10, Bandung",
+      "mapsUrl": "https://maps.google.com/?q=Masjid+Al-Ikhlas+Bandung",
+      "mapsEmbed": "https://www.google.com/maps?q=Masjid+Al-Ikhlas+Bandung&output=embed"
+    },
+    {
+      "type": "Resepsi",
+      "start": "2027-02-14T11:00:00+07:00",
+      "end": "2027-02-14T14:00:00+07:00",
+      "venue": "Gedung Serbaguna Melati",
+      "address": "Jl. Asia Afrika No. 5, Bandung",
+      "mapsUrl": "https://maps.google.com/?q=Gedung+Melati+Bandung",
+      "mapsEmbed": "https://www.google.com/maps?q=Gedung+Melati+Bandung&output=embed"
+    }
+  ],
+  "loveStory": [
+    {
+      "year": "2019",
+      "title": "Pertama Bertemu",
+      "text": "Bertemu di kampus saat sama-sama menjadi panitia acara orientasi mahasiswa baru."
+    },
+    {
+      "year": "2022",
+      "title": "Mulai Bersama",
+      "text": "Setelah bertahun-tahun berteman, kami memutuskan untuk melangkah bersama."
+    },
+    {
+      "year": "2025",
+      "title": "Lamaran",
+      "text": "Dimas melamar Rina di hadapan kedua keluarga dalam suasana yang hangat dan sederhana."
+    }
+  ],
+  "gallery": [
+    "/img/rina-dimas/1.webp",
+    "/img/rina-dimas/2.webp",
+    "/img/rina-dimas/3.webp",
+    "/img/rina-dimas/4.webp",
+    "/img/rina-dimas/5.webp",
+    "/img/rina-dimas/6.webp"
+  ],
+  "music": "/music/lagu.mp3",
+  "gifts": [
+    { "type": "bank", "provider": "BCA", "number": "1234567890", "holder": "Rina Amelia" },
+    { "type": "ewallet", "provider": "GoPay", "number": "081234567890", "holder": "Dimas Pratama" }
+  ],
+  "qrisImage": null,
+  "giftAddress": "Jl. Melati No. 3, Bandung 40111",
+  "liveStreamUrl": null,
+  "quote": {
+    "text": "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.",
+    "source": "QS. Ar-Rum: 21"
+  },
+  "closing": "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.",
+  "adminPassword": "ENV:ADMIN_PASSWORD_RINA_DIMAS"
+}
